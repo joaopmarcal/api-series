@@ -41,7 +41,7 @@ class AuthServiceProvider extends ServiceProvider
             $token = str_replace('Bearer ', '', $authorizationHeader);
             $dadosAutenticacao = JWT::decode($token,env('JWT_KEY'),['HS256']);
 
-            return User::where('email', $dadosAutenticacao['email'])->first();
+            return User::where('email', $dadosAutenticacao->email)->first();
         });
     }
 }
